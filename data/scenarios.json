@@ -1,0 +1,218 @@
+{
+  "campus": {
+    "name": "Neo Campus",
+    "tagline": "Sync student energy with a solar microgrid to cut fatigue and peak demand.",
+    "pulseScore": 78,
+    "hydrationIndex": 84,
+    "focusIndex": 72,
+    "energySavedKwh": 1240,
+    "wasteReducedPct": 32,
+    "burnoutRiskPct": 18,
+    "co2AvoidedTons": 2.4,
+    "impactSummary": "Meal timing + microgrid routing reduce queue stress and shave the noon energy spike.",
+    "signals": [
+      {
+        "label": "Cafeteria demand",
+        "value": "High",
+        "trend": "+12%",
+        "status": "alert"
+      },
+      {
+        "label": "Solar storage",
+        "value": "Stable",
+        "trend": "+6%",
+        "status": "good"
+      },
+      {
+        "label": "Hydration pods",
+        "value": "85%",
+        "trend": "+9%",
+        "status": "good"
+      }
+    ],
+    "zones": [
+      {
+        "name": "North Wing",
+        "status": "Stabilizing",
+        "score": 72
+      },
+      {
+        "name": "Library Core",
+        "status": "Overloaded",
+        "score": 58
+      },
+      {
+        "name": "Athletics",
+        "status": "Optimized",
+        "score": 88
+      }
+    ],
+    "recommendations": [
+      {
+        "title": "Stagger meal blocks",
+        "detail": "Shift 2nd-year dining by 14 minutes to reduce crowding.",
+        "impact": "Queue time -28%"
+      },
+      {
+        "title": "Pulse hydration boosters",
+        "detail": "Auto-trigger hydration pods after 90-min lecture blocks.",
+        "impact": "Focus +12%"
+      },
+      {
+        "title": "Microgrid swap",
+        "detail": "Route solar surplus to west kitchen during peak lunch.",
+        "impact": "Peak kW -9%"
+      }
+    ],
+    "journey": [
+      "Detect crowding via thermal + occupancy feeds.",
+      "Predict energy spikes 45 minutes ahead.",
+      "Auto-schedule meal waves and microgrid swaps.",
+      "Push personalized hydration nudges."
+    ]
+  },
+  "clinic": {
+    "name": "Vital Clinic",
+    "tagline": "Keep staff energized while cooling critical care with zero downtime.",
+    "pulseScore": 83,
+    "hydrationIndex": 79,
+    "focusIndex": 88,
+    "energySavedKwh": 980,
+    "wasteReducedPct": 21,
+    "burnoutRiskPct": 12,
+    "co2AvoidedTons": 1.7,
+    "impactSummary": "Shift-aware meal slots and adaptive HVAC protect patient zones and staff focus.",
+    "signals": [
+      {
+        "label": "ICU load",
+        "value": "Protected",
+        "trend": "-4%",
+        "status": "good"
+      },
+      {
+        "label": "Night shift fatigue",
+        "value": "Rising",
+        "trend": "+8%",
+        "status": "alert"
+      },
+      {
+        "label": "HVAC efficiency",
+        "value": "91%",
+        "trend": "+3%",
+        "status": "good"
+      }
+    ],
+    "zones": [
+      {
+        "name": "ER Bay",
+        "status": "Critical",
+        "score": 61
+      },
+      {
+        "name": "Surgery",
+        "status": "Optimized",
+        "score": 92
+      },
+      {
+        "name": "Recovery",
+        "status": "Balanced",
+        "score": 76
+      }
+    ],
+    "recommendations": [
+      {
+        "title": "Night shift fuel loop",
+        "detail": "Deliver micro-meals at 01:10 and 03:40 based on patient load.",
+        "impact": "Burnout -15%"
+      },
+      {
+        "title": "Thermal shielding",
+        "detail": "Seal ICU vents during external heat surges.",
+        "impact": "Cooling kW -6%"
+      },
+      {
+        "title": "Quiet recharge pods",
+        "detail": "Rotate staff into 12-min recovery pods.",
+        "impact": "Focus +9%"
+      }
+    ],
+    "journey": [
+      "Blend wearable fatigue signals with staffing schedules.",
+      "Optimize HVAC for critical zones first.",
+      "Deliver micro-meals via smart carts.",
+      "Update shift leads with fatigue heatmaps."
+    ]
+  },
+  "factory": {
+    "name": "Flux Factory",
+    "tagline": "Balance worker stamina and machine energy to stop downtime.",
+    "pulseScore": 71,
+    "hydrationIndex": 74,
+    "focusIndex": 69,
+    "energySavedKwh": 1540,
+    "wasteReducedPct": 27,
+    "burnoutRiskPct": 24,
+    "co2AvoidedTons": 3.1,
+    "impactSummary": "Dynamic break scheduling reduces line stoppage and keeps the plant under demand limits.",
+    "signals": [
+      {
+        "label": "Line throughput",
+        "value": "Wavering",
+        "trend": "-6%",
+        "status": "alert"
+      },
+      {
+        "label": "Hydration compliance",
+        "value": "78%",
+        "trend": "+4%",
+        "status": "good"
+      },
+      {
+        "label": "Generator load",
+        "value": "High",
+        "trend": "+11%",
+        "status": "alert"
+      }
+    ],
+    "zones": [
+      {
+        "name": "Forge Line",
+        "status": "Overheated",
+        "score": 55
+      },
+      {
+        "name": "Assembly",
+        "status": "Balanced",
+        "score": 73
+      },
+      {
+        "name": "QA Dock",
+        "status": "Optimized",
+        "score": 86
+      }
+    ],
+    "recommendations": [
+      {
+        "title": "Pulse breaks",
+        "detail": "Trigger micro-breaks based on vibration + noise spikes.",
+        "impact": "Downtime -19%"
+      },
+      {
+        "title": "Thermal swap",
+        "detail": "Rotate crew every 54 minutes in forge zone.",
+        "impact": "Heat stress -22%"
+      },
+      {
+        "title": "Load shedding",
+        "detail": "Delay non-critical machines during peak grid price.",
+        "impact": "Energy cost -11%"
+      }
+    ],
+    "journey": [
+      "Monitor line vibration and hydration wearables.",
+      "Forecast overload 30 minutes in advance.",
+      "Auto-queue breaks and machine throttling.",
+      "Surface alerts to floor leads."
+    ]
+  }
+}

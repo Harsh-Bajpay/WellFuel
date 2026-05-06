@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WellFuel | PulseGrid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background">
+      <div class="grid-glow"></div>
+      <div class="matrix-rain"></div>
+      <div class="hero-image"></div>
+    </div>
+
+    <header class="top-bar">
+      <div class="logo">WellFuel</div>
+      <nav class="top-nav">
+        <a href="#overview">Overview</a>
+        <a href="#pulse">Pulse</a>
+        <a href="#zones">Zones</a>
+        <a href="#actions">Actions</a>
+      </nav>
+      <button class="btn ghost" id="deployButton">Deploy on GCP</button>
+    </header>
+
+    <main>
+      <section class="hero" id="overview">
+        <div class="hero-copy">
+          <div class="eyebrow">Prompt-a-thon Challenge</div>
+          <h1>WellFuel PulseGrid</h1>
+          <p class="hero-subtitle">
+            A real-time orchestration layer that balances human energy and building energy. Predict
+            fatigue, cut peak demand, and keep teams fueled with a single pulse score.
+          </p>
+          <div class="hero-actions">
+            <button class="btn primary" id="simulateButton">Run live simulation</button>
+            <button class="btn secondary">Share the pulse</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <span class="stat-label">Pulse Score</span>
+              <span class="stat-value" data-metric="pulseScore">--</span>
+              <span class="stat-unit">/100</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Energy Saved</span>
+              <span class="stat-value" data-metric="energySavedKwh">--</span>
+              <span class="stat-unit">kWh</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Burnout Risk</span>
+              <span class="stat-value" data-metric="burnoutRiskPct">--</span>
+              <span class="stat-unit">%</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="pulse-orb">
+            <div class="orb-core">
+              <span class="orb-label" data-field="site-name">Loading</span>
+              <span class="orb-score" data-metric="pulseScore">--</span>
+            </div>
+            <div class="orb-ring"></div>
+            <div class="orb-ring ring-two"></div>
+            <div class="orb-ring ring-three"></div>
+          </div>
+          <div class="hero-panel">
+            <div class="panel-title">Live scenario</div>
+            <div class="scenario-switch">
+              <button class="chip" data-site="campus">Neo Campus</button>
+              <button class="chip" data-site="clinic">Vital Clinic</button>
+              <button class="chip" data-site="factory">Flux Factory</button>
+            </div>
+            <p class="panel-summary" data-field="site-tagline"></p>
+            <div class="impact-strip">
+              <div class="impact-chip">
+                <span class="impact-value" data-metric="co2AvoidedTons">--</span>
+                <span class="impact-label">t CO₂ avoided</span>
+              </div>
+              <div class="impact-chip">
+                <span class="impact-value" data-metric="wasteReducedPct">--</span>
+                <span class="impact-label">% waste cut</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pulse-section" id="pulse">
+        <div class="pulse-canvas">
+          <canvas id="pulseCanvas"></canvas>
+          <div class="pulse-overlay">
+            <span class="mono">Live pulse stream</span>
+            <span class="pulse-status" data-field="impact-summary"></span>
+          </div>
+        </div>
+        <div class="pulse-details">
+          <div class="section-title">Signal stack</div>
+          <div class="signal-list" data-list="signals"></div>
+          <div class="sliders">
+            <label for="intensity">
+              Load intensity
+              <span class="slider-value" id="intensityValue">50%</span>
+            </label>
+            <input id="intensity" type="range" min="10" max="90" value="50" />
+          </div>
+          <div class="meter-grid">
+            <div class="meter-card">
+              <span class="meter-label">Hydration index</span>
+              <div class="meter" data-meter="hydrationIndex"></div>
+            </div>
+            <div class="meter-card">
+              <span class="meter-label">Focus index</span>
+              <div class="meter" data-meter="focusIndex"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="zone-section" id="zones">
+        <div class="section-title">Zone health</div>
+        <div class="zone-grid" data-list="zones"></div>
+      </section>
+
+      <section class="action-section" id="actions">
+        <div class="section-title">AI-guided actions</div>
+        <div class="action-grid" data-list="recommendations"></div>
+      </section>
+
+      <section class="journey-section">
+        <div class="section-title">How it works</div>
+        <ol class="journey" data-list="journey"></ol>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-card">
+        <div>
+          <h3>Built for GCP on $5 credits</h3>
+          <p>
+            Cloud Run serves the API + UI in one container, Firestore stores live pulse events, and
+            Cloud Storage keeps media assets cheap. This demo ships with a ready Cloud Run entry
+            point.
+          </p>
+        </div>
+        <div class="footer-actions">
+          <button class="btn primary">Launch deck</button>
+          <button class="btn ghost">Download pitch</button>
+        </div>
+      </div>
+      <p class="footer-note">WellFuel • Human energy meets energy grids.</p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
