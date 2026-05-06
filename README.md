@@ -25,6 +25,11 @@ npm run dev
 ```
 Open `http://localhost:8080`.
 
+## Testing
+```bash
+npm test
+```
+
 ### API Endpoints
 - `GET /api/scenarios` → all scenario data
 - `GET /api/impact?site=campus` → specific site data

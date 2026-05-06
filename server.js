@@ -2,13 +2,17 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
-const port = process.env.PORT || 8080;
 const rootDir = __dirname;
 const scenariosPath = path.join(rootDir, "data", "scenarios.json");
 
 const readScenarios = () => {
-  const raw = fs.readFileSync(scenariosPath, "utf8");
-  return JSON.parse(raw);
+  try {
+    const raw = fs.readFileSync(scenariosPath, "utf8");
+    return JSON.parse(raw);
+  } catch (error) {
+    console.error("Scenario data unavailable. Ensure data/scenarios.json exists and is valid.", error);
+    return null;
+  }
 };
 
 const contentTypes = {
@@ -47,26 +51,41 @@ const sendFile = (res, filePath) => {
   });
 };
 
-const server = http.createServer((req, res) => {
-  const url = new URL(req.url, `http://${req.headers.host}`);
-  if (url.pathname === "/healthz") {
-    return sendJson(res, 200, { status: "ok" });
-  }
+const buildServer = () =>
+  http.createServer((req, res) => {
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    if (url.pathname === "/healthz") {
+      return sendJson(res, 200, { status: "ok" });
+    }
 
-  if (url.pathname === "/api/scenarios") {
-    return sendJson(res, 200, readScenarios());
-  }
+    if (url.pathname === "/api/scenarios") {
+      const scenarios = readScenarios();
+      if (!scenarios) return sendJson(res, 500, { error: "Scenario data unavailable." });
+      return sendJson(res, 200, scenarios);
+    }
 
-  if (url.pathname === "/api/impact") {
-    const site = url.searchParams.get("site") || "campus";
-    const scenarios = readScenarios();
-    return sendJson(res, 200, scenarios[site] || scenarios.campus);
-  }
+    if (url.pathname === "/api/impact") {
+      const site = url.searchParams.get("site") || "campus";
+      const scenarios = readScenarios();
+      if (!scenarios) return sendJson(res, 500, { error: "Scenario data unavailable." });
+      return sendJson(res, 200, scenarios[site] || scenarios.campus);
+    }
 
-  const filePath = url.pathname === "/" ? path.join(rootDir, "index.html") : path.join(rootDir, url.pathname);
-  return sendFile(res, filePath);
-});
+    const filePath = url.pathname === "/" ? path.join(rootDir, "index.html") : path.join(rootDir, url.pathname);
+    return sendFile(res, filePath);
+  });
 
-server.listen(port, () => {
-  console.log(`WellFuel running on port ${port}`);
-});
+const startServer = (requestedPort = process.env.PORT || 8080) => {
+  const server = buildServer();
+  server.listen(requestedPort, () => {
+    const activePort = server.address().port;
+    console.log(`WellFuel running on port ${activePort}`);
+  });
+  return server;
+};
+
+if (require.main === module) {
+  startServer();
+}
+
+module.exports = { buildServer, startServer };

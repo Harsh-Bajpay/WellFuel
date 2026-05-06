@@ -257,7 +257,10 @@ const loadScenarios = async () => {
         return await response.json();
       }
     } catch (error) {
-      console.warn(`Scenario load failed for ${source}`, error);
+      console.warn(
+        `Failed to load scenarios from ${source}. Ensure the server is running or data/scenarios.json exists.`,
+        error
+      );
     }
   }
   return {};
