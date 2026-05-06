@@ -257,7 +257,7 @@ const loadScenarios = async () => {
         return await response.json();
       }
     } catch (error) {
-      // ignore and fall back
+      console.warn(`Scenario load failed for ${source}`, error);
     }
   }
   return {};
