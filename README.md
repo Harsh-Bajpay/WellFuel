@@ -23,7 +23,7 @@ WellFuel is a React + TypeScript web application that helps individuals make bet
 
 ## 🧠 Smart Recommendation Engine
 
-WellFuel analyses your logged meals in real time and surfaces contextual nudges such as:
+WellFuel analyzes your logged meals in real time and surfaces contextual nudges such as:
 
 - **Low protein** – suggests high-protein foods when below 60% of goal
 - **Low fiber** – recommends fiber-rich options when under 50% of goal

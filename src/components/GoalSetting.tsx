@@ -81,7 +81,7 @@ const GoalSetting: React.FC<GoalSettingProps> = ({ goals, onSave }) => {
   return (
     <div className="goal-setting">
       <h2 className="section-title">Nutrition Goals</h2>
-      <p className="section-subtitle">Set your daily targets to get personalised tracking and recommendations.</p>
+      <p className="section-subtitle">Set your daily targets to get personalized tracking and recommendations.</p>
 
       {/* Presets */}
       <div className="presets">
